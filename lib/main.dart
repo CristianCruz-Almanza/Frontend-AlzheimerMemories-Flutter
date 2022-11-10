@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:frontent_alzheimermemories_flutter/screens/home_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:frontent_alzheimermemories_flutter/screens/login_screen.dart';
+import 'package:frontent_alzheimermemories_flutter/shared/sidebar/menu.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,11 +21,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Productos App',
+      title: 'AlzheimerMemories App',
       initialRoute: 'login',
       routes: {
         'login': (_) => const LoginScreen(),
-        'home': (_) => const HomeScreen(),
+        'home': (context) => const MenuPrincipal(),
       },
       theme:
           ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.grey[300]),

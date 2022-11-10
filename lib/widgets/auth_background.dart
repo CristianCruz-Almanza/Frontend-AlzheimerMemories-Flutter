@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
 
 class AuthBackground extends StatelessWidget {
   final Widget child;
@@ -26,14 +27,16 @@ class _HeaderIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        width: double.infinity,
-        margin: const EdgeInsets.only(top: 1),
-        // child: Icon(Icons.person_pin, color: Colors.red, size: 100),
-        child: Image.asset(
-          'assets/logo-principal.png',
-          width: 580,
-          height: 285,
+      child: BounceInDown(
+        child: Container(
+          width: double.infinity,
+          margin: const EdgeInsets.only(top: 1),
+          // child: Icon(Icons.person_pin, color: Colors.red, size: 100),
+          child: Image.asset(
+            'assets/logo-principal.png',
+            width: 580,
+            height: 285,
+          ),
         ),
       ),
     );
@@ -72,15 +75,20 @@ class _PurpleBox extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       decoration: _purpleBackground(),
-      child: CustomPaint(
-        painter: _HeaderDiagonalPainter(),
-        child: Stack(children: [
-          Positioned(top: 90, left: 30, child: _Bubble()),
-          Positioned(top: -40, left: -30, child: _Bubble()),
-          Positioned(top: -50, right: -20, child: _Bubble()),
-          Positioned(bottom: -50, left: 10, child: _Bubble()),
-          Positioned(bottom: 120, right: 20, child: _Bubble()),
-        ]),
+      child: Pulse(
+        // infinite: true,
+        //duration: Duration(milliseconds: 3000),
+        child: CustomPaint(
+          painter: _HeaderDiagonalPainter(),
+          child: Stack(children: [
+            Positioned(top: 90, left: 10, child: _Bubble()),
+            Positioned(top: 200, left: 1, child: _Bubble()),
+            Positioned(top: -50, right: -20, child: _Bubble()),
+            Positioned(bottom: -50, left: 10, child: _Bubble()),
+            Positioned(bottom: 120, right: 20, child: _Bubble()),
+            Positioned(bottom: 75, left: 100, child: _Bubble()),
+          ]),
+        ),
       ),
     );
   }
