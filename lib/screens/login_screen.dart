@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontent_alzheimermemories_flutter/providers/login_form_provider.dart';
 import 'package:provider/provider.dart';
 
-import 'package:frontent_alzheimermemories_flutter/ui/input_decorations.dart';
+import 'package:frontent_alzheimermemories_flutter/ui/inputs/input_decorations.dart';
 import 'package:frontent_alzheimermemories_flutter/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -11,31 +11,35 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: AuthBackground(
-            child: SingleChildScrollView(
-      child: Column(
-        children: [
-          const SizedBox(height: 250),
-          CardContainer(
-              child: Column(
+      body: AuthBackground(
+        child: SingleChildScrollView(
+          child: Column(
             children: [
-              const SizedBox(height: 10),
-              Text('Login', style: Theme.of(context).textTheme.headline4),
-              const SizedBox(height: 30),
-              ChangeNotifierProvider(
-                  create: (_) => LoginFormProvider(), child: _LoginForm())
+              const SizedBox(height: 250),
+              CardContainer(
+                  child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Text('Login', style: Theme.of(context).textTheme.headline4),
+                  const SizedBox(height: 30),
+                  ChangeNotifierProvider(
+                      create: (_) => LoginFormProvider(), child: _LoginForm())
+                ],
+              )),
+              const SizedBox(height: 50),
+              const Text(
+                'Crear una nueva cuenta',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              const SizedBox(height: 50),
             ],
-          )),
-          const SizedBox(height: 50),
-          const Text(
-            'Crear una nueva cuenta',
-            style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
           ),
-          const SizedBox(height: 50),
-        ],
+        ),
       ),
-    )));
+    );
   }
 }
 

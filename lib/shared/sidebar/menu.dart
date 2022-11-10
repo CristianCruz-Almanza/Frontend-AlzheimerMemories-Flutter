@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontent_alzheimermemories_flutter/screens/screens.dart';
 
 import '../../screens/info_alzheimer_screen.dart';
 
@@ -23,6 +24,7 @@ class MenuPrincipal extends StatelessWidget {
                 Tab(icon: Icon(Icons.info_outline_rounded)),
                 Tab(icon: Icon(Icons.text_fields)),
                 Tab(icon: Icon(Icons.games_rounded)),
+                // Tab(icon: Icon(Icons.maps_home_work)),
               ],
             ),
             title: const Text('Alzheimer Memories'),
@@ -30,8 +32,9 @@ class MenuPrincipal extends StatelessWidget {
           body: const TabBarView(
             children: [
               InfoAlzheimerScreen(),
+              GpsAccessScreen(),
               InfoAlzheimerScreen(),
-              InfoAlzheimerScreen(),
+              //InfoAlzheimerScreen(),
             ],
           ),
         ),
