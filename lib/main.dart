@@ -8,18 +8,12 @@ import 'package:frontent_alzheimermemories_flutter/shared/sidebar/menu.dart';
 import 'blocs/blocs.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setSystemUIOverlayStyle(
-  //   const SystemUiOverlayStyle(
-  //     statusBarColor: Colors.transparent,
-  //     statusBarIconBrightness: Brightness.dark,
-  //   ),
-  // );
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => GpsBloc()),
         BlocProvider(create: (context) => LocationBloc()),
+        BlocProvider(create: (context) => MapBloc()),
       ],
       child: const MyApp(),
     ),

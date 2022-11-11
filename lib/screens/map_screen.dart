@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontent_alzheimermemories_flutter/blocs/blocs.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:frontent_alzheimermemories_flutter/views/map_view.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -35,16 +35,19 @@ class _MapScreenState extends State<MapScreen> {
             child: Text('espere porfavor'),
           );
         }
-        final CameraPosition initialCameraPosition = CameraPosition(
-          target: state.lastKnowLocation!,
-          tilt: 59.440717697143555,
-          zoom: 15,
+        return SingleChildScrollView(
+          child: Stack(
+            children: [
+              MappView(initialLocation: state.lastKnowLocation!),
+              Text('Hola mundo')
+            ],
+          ),
         );
+
         // return Center(
         //   child: Text(
         //       '${state.lastKnowLocation!.latitude},${state.lastKnowLocation!.longitude}'),
         // );
-        return GoogleMap(initialCameraPosition: initialCameraPosition);
       },
     ));
   }
