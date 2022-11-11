@@ -30,6 +30,7 @@ class MenuPrincipal extends StatelessWidget {
             title: const Text('Alzheimer Memories'),
           ),
           body: const TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             children: [
               InfoAlzheimerScreen(),
               LoadingScreen(),

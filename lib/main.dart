@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frontent_alzheimermemories_flutter/blocs/gps/gps_bloc.dart';
 
 import 'package:frontent_alzheimermemories_flutter/screens/login_screen.dart';
 import 'package:frontent_alzheimermemories_flutter/shared/sidebar/menu.dart';
+
+import 'blocs/blocs.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ void main() {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => GpsBloc()),
+        BlocProvider(create: (context) => LocationBloc()),
       ],
       child: const MyApp(),
     ),
