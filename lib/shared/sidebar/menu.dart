@@ -32,7 +32,7 @@ class MenuPrincipal extends StatelessWidget {
           body: const TabBarView(
             children: [
               InfoAlzheimerScreen(),
-              GpsAccessScreen(),
+              LoadingScreen(),
               InfoAlzheimerScreen(),
               //InfoAlzheimerScreen(),
             ],
