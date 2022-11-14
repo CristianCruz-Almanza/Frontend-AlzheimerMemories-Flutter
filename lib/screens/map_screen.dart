@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontent_alzheimermemories_flutter/blocs/blocs.dart';
 import 'package:frontent_alzheimermemories_flutter/views/map_view.dart';
+import 'package:frontent_alzheimermemories_flutter/widgets/widgets.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -28,27 +30,47 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: BlocBuilder<LocationBloc, LocationState>(
-      builder: (context, state) {
-        if (state.lastKnowLocation == null) {
-          return const Center(
-            child: Text('espere porfavor'),
+    return Scaffold(
+      body: BlocBuilder<LocationBloc, LocationState>(
+        builder: (context, locationState) {
+          if (locationState.lastKnowLocation == null) {
+            return const Center(
+              child: Text('espere porfavor'),
+            );
+          }
+          return BlocBuilder<MapBloc, MapState>(
+            builder: (context, mapState) {
+              Map<String, Polyline> polylines = Map.from(mapState.polylines);
+              if (!mapState.showMyRoute) {
+                polylines.removeWhere((key, value) => key == 'MyRoute');
+              }
+              return SingleChildScrollView(
+                child: Stack(
+                  children: [
+                    MappView(
+                      initialLocation: locationState.lastKnowLocation!,
+                      polylines: polylines.values.toSet(),
+                    ),
+                  ],
+                ),
+              );
+            },
           );
-        }
-        return SingleChildScrollView(
-          child: Stack(
-            children: [
-              MappView(initialLocation: state.lastKnowLocation!),
-              Text('Hola mundo')
-            ],
-          ),
-        );
 
-        // return Center(
-        //   child: Text(
-        //       '${state.lastKnowLocation!.latitude},${state.lastKnowLocation!.longitude}'),
-        // );
-      },
-    ));
+          // return Center(
+          //   child: Text(
+          //       '${state.lastKnowLocation!.latitude},${state.lastKnowLocation!.longitude}'),
+          // );
+        },
+      ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [
+          BtnToggleUserRoute(),
+          BtnCurrentLocation(),
+          BtnFollowUser(),
+        ],
+      ),
+    );
   }
 }
