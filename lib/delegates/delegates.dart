@@ -1,0 +1,1 @@
+export 'package:frontent_alzheimermemories_flutter/delegates/search_destination_delegate.dart';

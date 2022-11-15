@@ -26,9 +26,9 @@ class MappView extends StatelessWidget {
             mapBloc.add(OnStopFollowingUserEvent()),
         child: GoogleMap(
           initialCameraPosition: initialCameraPosition,
-          //compassEnabled: false,
+          compassEnabled: false,
           myLocationEnabled: true,
-          //zoomControlsEnabled: false,
+          zoomControlsEnabled: false,
           myLocationButtonEnabled: false,
           polylines: polylines,
           onMapCreated: (controller) =>
