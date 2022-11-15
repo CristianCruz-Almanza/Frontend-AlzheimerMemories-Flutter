@@ -88,12 +88,52 @@ class _LoginForm extends StatelessWidget {
             },
           ),
           const SizedBox(height: 30),
-          MaterialButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              disabledColor: Colors.grey,
-              elevation: 0,
-              color: Colors.deepPurple,
+          // MaterialButton(
+          //   shape:
+          //       RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          //   disabledColor: Colors.grey,
+          //   elevation: 0,
+          //   color: Colors.deepPurple,
+          //   onPressed: loginForm.isLoading
+          //       ? null
+          //       : () async {
+          //           FocusScope.of(context).unfocus();
+
+          //           if (!loginForm.isValidForm()) return;
+
+          //           loginForm.isLoading = true;
+
+          //           await Future.delayed(const Duration(seconds: 2));
+
+          //           loginForm.isLoading = false;
+
+          //           // ignore: use_build_context_synchronously
+          //           Navigator.pushReplacementNamed(context, 'home');
+          //         },
+          //   child: Container(
+          //     padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+          //     child: Text(
+          //       loginForm.isLoading ? 'Espere' : 'Ingresar',
+          //       style: const TextStyle(color: Colors.white),
+          //     ),
+          //   ),
+          // ),
+          Container(
+            margin: const EdgeInsets.all(20),
+            width: 250,
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: const LinearGradient(
+                colors: [
+                  Colors.blue,
+                  Colors.deepPurple,
+                ],
+                begin: FractionalOffset.centerLeft,
+                end: FractionalOffset.centerRight,
+              ),
+            ),
+            child: TextButton(
               onPressed: loginForm.isLoading
                   ? null
                   : () async {
@@ -110,13 +150,35 @@ class _LoginForm extends StatelessWidget {
                       // ignore: use_build_context_synchronously
                       Navigator.pushReplacementNamed(context, 'home');
                     },
-              child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                  child: Text(
-                    loginForm.isLoading ? 'Espere' : 'Ingresar',
-                    style: const TextStyle(color: Colors.white),
-                  )))
+              child: Text(
+                loginForm.isLoading ? 'Espere' : 'Ingresar',
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(20),
+            width: 250,
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: const LinearGradient(
+                colors: [
+                  Colors.deepPurple,
+                  Colors.blue,
+                ],
+                begin: FractionalOffset.centerLeft,
+                end: FractionalOffset.centerRight,
+              ),
+            ),
+            child: TextButton(
+              child: const Text(
+                'Ingresar con google',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {},
+            ),
+          ),
         ],
       ),
     );
