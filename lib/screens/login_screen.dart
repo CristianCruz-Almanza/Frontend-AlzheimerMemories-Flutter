@@ -23,7 +23,9 @@ class LoginScreen extends StatelessWidget {
                   Text('Login', style: Theme.of(context).textTheme.headline4),
                   const SizedBox(height: 30),
                   ChangeNotifierProvider(
-                      create: (_) => LoginFormProvider(), child: _LoginForm())
+                    create: (_) => LoginFormProvider(),
+                    child: _LoginForm(),
+                  )
                 ],
               )),
               const SizedBox(height: 50),
@@ -157,7 +159,7 @@ class _LoginForm extends StatelessWidget {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(20),
+            //margin: const EdgeInsets.all(20),
             width: 250,
             height: 50,
             decoration: BoxDecoration(
